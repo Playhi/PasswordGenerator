@@ -180,13 +180,29 @@ public class MainActivity extends Activity {
     }
 
     @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        final EditText rootKeyEditText = findViewById(R.id.rootKey_editText);
+        if (rootKeyEditText.getInputType() == InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD) {
+            menu.findItem(R.id.showAllKey).setTitle(R.string.HideKey);
+        } else {
+            menu.findItem(R.id.showAllKey).setTitle(R.string.showAllKey);
+        }
+        return super.onPrepareOptionsMenu(menu);
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
-            case 1:
+            case R.id.showAllKey:
                 final EditText rootKeyEditText = findViewById(R.id.rootKey_editText);
                 final EditText keywordEditText = findViewById(R.id.keyword_editText);
-                rootKeyEditText.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
-                keywordEditText.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+                if (rootKeyEditText.getInputType() == InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD) {
+                    rootKeyEditText.setInputType(InputType.TYPE_CLASS_TEXT|InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                    keywordEditText.setInputType(InputType.TYPE_CLASS_TEXT|InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                } else {
+                    rootKeyEditText.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+                    keywordEditText.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+                }
                 break;
             default:
                 return super.onOptionsItemSelected(item);

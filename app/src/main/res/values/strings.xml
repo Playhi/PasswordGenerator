@@ -7,4 +7,5 @@
     <string name="error">Error</string>
     <string name="plsWait">Please wait...</string>
     <string name="showAllKey">Show All Key</string>
+    <string name="HideKey">Hide Key</string>
 </resources>

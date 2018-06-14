@@ -8,4 +8,5 @@
     <string name="error">发生错误</string>
     <string name="plsWait">请稍候……</string>
     <string name="showAllKey">显示全部密钥</string>
+    <string name="HideKey">隐藏密钥</string>
 </resources>
