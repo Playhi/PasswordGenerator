@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:padding="5dp">
+
+    <EditText
+        android:id="@+id/rootKey_editText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/rootKey"
+        android:inputType="textPassword"
+        android:singleLine="true" />
+
+    <EditText
+        android:id="@+id/keyword_editText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rootKey_editText"
+        android:hint="@string/keyword"
+        android:inputType="textPassword"
+        android:singleLine="true" />
+
+    <Button
+        android:id="@+id/go_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/keyword_editText"
+        android:text="@string/go" />
+
+    <EditText
+        android:id="@+id/password_editText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/go_button"
+        android:hint="@string/password"
+        android:inputType="textMultiLine"
+        android:scrollbars="vertical"
+        tools:ignore="TextFields" />
+</RelativeLayout>

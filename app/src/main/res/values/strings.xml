@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">PasswordGenerator</string>
+    <string name="rootKey">Root Key</string>
+    <string name="go">Go</string>
+    <string name="keyword">Keyword</string>
+    <string name="password">Password</string>
+    <string name="error">Error</string>
+    <string name="plsWait">Please wait...</string>
+    <string name="showAllKey">Show All Key</string>
+</resources>
