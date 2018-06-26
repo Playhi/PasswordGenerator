@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">密码生成器</string>
+    <string name="app_name">固定密码生成器</string>
     <string name="rootKey">根密钥</string>
     <string name="go">生成</string>
     <string name="keyword">关键词</string>
@@ -9,4 +9,8 @@
     <string name="plsWait">请稍候……</string>
     <string name="showAllKey">显示全部密钥</string>
     <string name="HideKey">隐藏密钥</string>
+    <string name="showRootKey">显示根密钥</string>
+    <string name="showKeyword">显示关键词</string>
+    <string name="hideKeyword">隐藏关键词</string>
+    <string name="hideRootKey">隐藏根密钥</string>
 </resources>

@@ -30,13 +30,13 @@ public class MainActivity extends Activity {
                 try {
                     MessageDigest rootKey = MessageDigest.getInstance("SHA-256");
                     rootKey.update(Base64.encode(rootKeyEditText.getText().toString().getBytes(),Base64.DEFAULT));
-                    String rootKeyS = String.format("%032X", new BigInteger(1, rootKey.digest()));
+                    String rootKeyS = String.format("%032X", new BigInteger(1, rootKey.digest())).toUpperCase();
                     MessageDigest keyword = MessageDigest.getInstance("MD5");
                     keyword.update(Base64.encode(keywordEditText.getText().toString().getBytes(),Base64.DEFAULT));
-                    String keywordS = String.format("%032X", new BigInteger(1, keyword.digest()));
+                    String keywordS = String.format("%032X", new BigInteger(1, keyword.digest())).toUpperCase();
                     MessageDigest password = MessageDigest.getInstance("SHA-256");
                     password.update(Base64.encode((keywordS + rootKeyS).getBytes(),Base64.DEFAULT));
-                    String passwordS = String.format("%032X", new BigInteger(1, password.digest()));
+                    String passwordS = String.format("%032X", new BigInteger(1, password.digest())).toUpperCase();
                     String result = "";
                     for (int j = 0; j < passwordS.length(); j++) {
                         if ((j&1)!=0){
@@ -182,26 +182,51 @@ public class MainActivity extends Activity {
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
         final EditText rootKeyEditText = findViewById(R.id.rootKey_editText);
+        final EditText keywordEditText = findViewById(R.id.keyword_editText);
         if (rootKeyEditText.getInputType() == InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD) {
             menu.findItem(R.id.showAllKey).setTitle(R.string.HideKey);
+            menu.findItem(R.id.showRootKey).setTitle(R.string.hideRootKey);
         } else {
             menu.findItem(R.id.showAllKey).setTitle(R.string.showAllKey);
+            menu.findItem(R.id.showRootKey).setTitle(R.string.showRootKey);
+        }
+        if (keywordEditText.getInputType() == InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD) {
+            menu.findItem(R.id.showKeyword).setTitle(R.string.hideKeyword);
+        } else {
+            menu.findItem(R.id.showKeyword).setTitle(R.string.showKeyword);
         }
         return super.onPrepareOptionsMenu(menu);
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        final EditText rootKeyEditText = findViewById(R.id.rootKey_editText);
+        final EditText keywordEditText = findViewById(R.id.keyword_editText);
         switch (item.getItemId()){
             case R.id.showAllKey:
-                final EditText rootKeyEditText = findViewById(R.id.rootKey_editText);
-                final EditText keywordEditText = findViewById(R.id.keyword_editText);
                 if (rootKeyEditText.getInputType() == InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD) {
                     rootKeyEditText.setInputType(InputType.TYPE_CLASS_TEXT|InputType.TYPE_TEXT_VARIATION_PASSWORD);
-                    keywordEditText.setInputType(InputType.TYPE_CLASS_TEXT|InputType.TYPE_TEXT_VARIATION_PASSWORD);
                 } else {
                     rootKeyEditText.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+                }
+                if (keywordEditText.getInputType() == InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD){
+                    keywordEditText.setInputType(InputType.TYPE_CLASS_TEXT|InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                } else {
                     keywordEditText.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+                }
+                break;
+            case R.id.showKeyword:
+                if (keywordEditText.getInputType() == InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD){
+                    keywordEditText.setInputType(InputType.TYPE_CLASS_TEXT|InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                } else {
+                    keywordEditText.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+                }
+                break;
+            case R.id.showRootKey:
+                if (rootKeyEditText.getInputType() == InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD) {
+                    rootKeyEditText.setInputType(InputType.TYPE_CLASS_TEXT|InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                } else {
+                    rootKeyEditText.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
                 }
                 break;
             default:

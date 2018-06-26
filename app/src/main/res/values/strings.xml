@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">PasswordGenerator</string>
+    <string name="app_name">FixedPasswordGenerator</string>
     <string name="rootKey">Root Key</string>
     <string name="go">Go</string>
     <string name="keyword">Keyword</string>
@@ -8,4 +8,8 @@
     <string name="plsWait">Please wait...</string>
     <string name="showAllKey">Show All Key</string>
     <string name="HideKey">Hide Key</string>
+    <string name="showRootKey">Show Root Key</string>
+    <string name="showKeyword">Show Keyword</string>
+    <string name="hideKeyword">Hide Keyword</string>
+    <string name="hideRootKey">Hide Root Key</string>
 </resources>
